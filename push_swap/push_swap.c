@@ -1,82 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 17:12:40 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/01/14 16:08:14 by imeslaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-
-int cmp_list(a_list **stack_a , char *str)
+t_list *bef(t_list *stack, t_list *node)
 {
-    if(*stack_a == NULL)
-        return 0;
-    a_list *head = *stack_a;
-    while(head)
-    {
-        
-        if(ft_memcmper(head->data,str) == 0)
-            return 1;
-        head = head->next;
-    }
-    return 0;
-}
-
-
-char    *creat_list(a_list **stack_a, char **str)
-{
-    int i;
-    char *check;
-
-    i = 0;
-    check = "no";
-    while(str[i])
-    {
-        if(cmp_list(stack_a,str[i]) == 0)
-        {
-            lstclear(stack_a);
-            write(2,"error\n",6);
-            free_strings(str);
-            return check;
-        }
-        else
-        {
-            lstadd_back(stack_a, lstnew(ft_atoi(str[i])));
-            free(str[i]);  
-        }
-        i++;
-    }
-    free(str);
-    check = "yes";
-    return check;
-}
-
-void  push_in_a(char **str,a_list **stack_a)
-{
-    int i;
-    int j;
-    char **tmp;
-    char *check;
+    t_list *prev;
     
-
-    tmp = NULL;
-    check = NULL;
-    i = 1;
-    j = 0;
-    while(str[i])
+    prev = NULL;
+    while (stack && stack != node)
     {
-        tmp = ft_split(str[i],' ');
-        check = check_validation(tmp);
-        if(ft_strcmp(check, "yes") == 0)
+        prev = stack;
+        stack = stack->next;
+    }
+    return prev;
+}
+
+void swap(t_list **stack_a)
+{
+    t_list *head;
+    t_list *prev;
+    int i = 0;
+
+    prev = NULL;
+    head = *stack_a;
+    if (!head || !head->next) return;
+
+    while (head && head->next) 
+    {
+        if (head->data > head->next->data)
         {
-            check = creat_list(stack_a,tmp);
-            if(ft_strcmp(check,"") == 0)
-                return;
+            printf("\n--%d--\n",i++);
+            prev = bef(*stack_a, head);
+            if (prev) 
+                prev->next = head->next; 
+            else
+                *stack_a = head->next;
+            
+            t_list *temp = head->next;
+            head->next = temp->next;
+            temp->next = head;
+
+            head = *stack_a;
         }
         else
-        {
-            lstclear(stack_a);
-            write(2,"error\n",6);
-            free_strings(tmp);
-            return ;
-        } 
-        i++; 
-        free(tmp);
+            head = head->next;
     }
 }
 
@@ -84,20 +61,41 @@ int main(int argc,char *argv[])
 {
     int i;
     int j;
-    int num;
-    char **args;
-    a_list *stack_a;
+    t_list *stack_a;
     
-    args = NULL;
     stack_a = NULL;
     j = 0;
     i = 1;
-    push_in_a(argv,&stack_a);
-    while(stack_a)
-    {
-        printf("%d\n",stack_a->data);
-        stack_a = stack_a->next;
+    if(argc > 1)
+    {    
+        push_in_a(argv,&stack_a);
+        swap(&stack_a);
+        while(stack_a)
+        {
+            printf("--%lld--\n",stack_a->data);
+            stack_a = stack_a->next;
+        }
     }
-    
+    else
+        write(1,"is empty\n",9);
     return 0;
 }
+
+// int main()
+// {
+//     t_list *stack_a;
+    
+//     stack_a = NULL;
+//     lstadd_back(&stack_a, lstnew(10));
+//     lstadd_back(&stack_a, lstnew(20));
+//     // lstadd_back(&stack_a, lstnew(30));
+//     // lstadd_back(&stack_a, lstnew(40));
+//     // lstadd_back(&stack_a, lstnew(50));
+//     sa(&stack_a);
+    
+//     while(stack_a)
+//         {
+//             printf("%lld\n",stack_a->data);
+//             stack_a = stack_a->next;
+//         }
+// }

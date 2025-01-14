@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 17:15:19 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/01/13 17:15:20 by imeslaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static char *check_sign(char *str)
@@ -31,11 +43,13 @@ char *check_validation(char **str)
     int j;
     char *check;
 
-    j = 0;
+    
     i = 0;
-    check = "no";
+    
     while(str[i])
     {
+        check = "no";
+        j = 0;
         while(str[i][j])
         {
             if((ft_isdigit(str[i][j]) == 0) && (str[i][j] != '-' && str[i][j] != '+'))
@@ -43,17 +57,9 @@ char *check_validation(char **str)
             j++;
         }
         check = check_sign(str[i]);
-        if(ft_strncmp(check,"no",2) == 0)
+        if(ft_strcmp(check,"no") == 0)
             return check;
         i++;
     }
     return check;
 }
-// int main(int argc, char *argv[])
-// {
-//     int i = 0;
-//     char *s;
-//     s = check_validation(argv);
-//     printf("%s",s); 
-//     return 0;
-// }

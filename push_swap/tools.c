@@ -1,111 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 17:12:33 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/01/13 17:12:34 by imeslaki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	ft_memcmper(void *s1,void *s2)
+t_list  *prev_last(t_list   *head)
 {
-	const unsigned char	*cmp1;
-	const unsigned char	*cmp2;
+    t_list  *pr_last;
+    t_list  *tmp;
 
-	cmp1 = (const unsigned char *)s1;
-	cmp2 = (const unsigned char *)s2;
+    tmp = NULL;
+    pr_last = NULL;
+    if(!head)
+        return NULL;
+    while(head)
+    {
+        tmp = head;
+        if(tmp->next == NULL)
+            return NULL;
+        if((tmp->next)->next == NULL)
+        {
+            pr_last = head;
+            return pr_last;
+        }
+        head = head->next;
+    }
+    return NULL;
+}
+void    del_last(t_list **stack)
+{
+    t_list  *pre_last;
+    t_list  *last;
 
-	while (*cmp1 || *cmp2)
+    last = lstlast(*stack);
+    if(!last)
+        return;
+    pre_last = prev_last(*stack);
+    if(!pre_last)
+    {
+        free(*stack);
+        return;
+    }
+    free(last);
+    pre_last->next = NULL;
+}
+
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	free_strings(char **ptr,int i)
+{
+	while (ptr[i] != NULL)
 	{
-		if (*cmp1 != *cmp2)
-			return (*cmp1 - *cmp2);
-		cmp1++;
-		cmp2++;
+		free(ptr[i]);
+		i++;
 	}
-	return (0);
+	free(ptr);
+	return;
 }
 
 
-int	ft_strcmp(char *s1,char *s2)
-{
-	unsigned char	*str1;
-	unsigned char	*str2;
-
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-
-	while (*str1 || *str2)
-	{
-		if (*str1 != *str2)
-		{
-			if (*str1 < *str2)
-				return (-1);
-			else
-				return (1);
-		}
-		str1++;
-		str2++;
-	}
-	return (0);
-}
-
-void	lstadd_back(a_list **lst, a_list *new)
-{
-	a_list	*last;
-
-	if (!new || !lst)
-		return ;
-	last = lstlast(*lst);
-	if (!last)
-		*lst = new;
-	else
-		last->next = new;
-}
-
-
-a_list	*lstnew(int data)
-{
-	a_list	*elem;
-
-	elem = malloc(sizeof(a_list));
-	if (!elem)
-		return (NULL);
-	elem->data = data;
-	elem->next = NULL;
-	return (elem);
-}
-
-
-
-a_list	*lstlast(a_list *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-void	lstdelone(a_list *lst)
-{
-	if (!lst)
-		return ;
-	free(lst);
-}
-void	lstclear(a_list **lst)
-{
-	a_list	*tmp;
-
-	if (!lst)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		free(*lst);
-		(*lst) = tmp;
-	}
-	*lst = NULL;
-}
-
-int	lstsize(a_list *lst)
+int	lstsize(t_list *lst)
 {
 	int		i;
-	a_list	*tmp;
+	t_list	*tmp;
 
 	tmp = lst;
 	i = 0;
