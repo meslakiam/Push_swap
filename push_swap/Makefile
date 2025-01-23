@@ -5,10 +5,10 @@ CC = cc
 
  CFLAGS = -Wall -Wextra -Werror
 
-SOURCES = push_args_in_a.c check_errors.c push_swap.c ft_atoll.c tools.c ft_split.c ft_isdigit.c \
-ft_strcmp.c ft_isdigit.c ft_strdup.c ft_strjoin.c ft_substr.c lstadd_back.c lstclear.c lstlast.c \
-lstnew.c swap_a.c swap_b.c sa_and_sb.c push_a.c push_b.c rotate_a.c rotate_b.c ra_and_rb.c \
-reverse_rotate_a.c reverse_rotate_b.c rra_and_rrb.c
+SOURCES = push_args_in_a.c check_errors.c push_swap.c tools.c tools1.c tools2.c ft_split.c ft_strjoin.c \
+ft_substr.c move_to_b.c push_operations.c swap_operations.c rotate_operations.c reverse_rotate_operations.c \
+sorted_arry.c sorted_back_in_a.c
+
 
 OBJ = $(SOURCES:.c=.o)
 

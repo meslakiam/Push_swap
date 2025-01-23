@@ -2,11 +2,13 @@
 
 int cmp_list(t_list **stack_a , char *str)
 {
-    long long num;
+    long num;
 
     num = 0;
     t_list *head = *stack_a;
     num = ft_atoll(str);
+    if(num > 2147483647 || num < -2147483648)
+        return 0;
     while(head)
     {
         if(head->data == num)
@@ -29,14 +31,14 @@ char    *add_to_list(t_list **stack_a, char **str)
         if(cmp_list(stack_a,str[i]) == 0)
         {
             lstclear(stack_a);
-            write(2,"error\n",6);
+            write(2,"Error\n",6);
             free_strings(str,i);
             return check;
         }
         else
         {
-            lstadd_back(stack_a, lstnew(ft_atoll(str[i])));
-            free(str[i]);  
+            lstadd_front(stack_a, lstnew(ft_atoll(str[i])));
+            free(str[i]);
         }
         i++;
     }
@@ -55,7 +57,7 @@ char *creat_list(t_list **stack_a, char**str, char  *check)
     else
     {
         lstclear(stack_a);
-        write(2,"error\n",6);
+        write(2,"Error\n",6);
         free_strings(str,0);
         return check;
     }
