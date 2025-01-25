@@ -37,7 +37,7 @@ char    *add_to_list(t_list **stack_a, char **str)
         }
         else
         {
-            lstadd_front(stack_a, lstnew(ft_atoll(str[i])));
+            lstadd_back(stack_a, lstnew(ft_atoll(str[i])));
             free(str[i]);
         }
         i++;

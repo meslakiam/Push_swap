@@ -33,20 +33,18 @@ int check_till_end(int data,int *arry, int end, int i)
     return check;
 }
 
-void    smaller()
-{
-    
-}
 
 void    fill_b(t_list   **stack_a,t_list **stack_b, int   end)
 {
     int i = 0;
     int check;
+    int arrylent;
     int *arry;
     int start;
     t_list  *head;
 
     head = NULL;
+    arrylent = lstsize(*stack_a);
     head = *stack_a;
     start = 0;
     
@@ -61,7 +59,7 @@ void    fill_b(t_list   **stack_a,t_list **stack_b, int   end)
                check = push_and_check_to_b(stack_a, stack_b, check, 2);
             if(check == 1)
             {
-                if(arry[end + 1] )
+                if(end + 1 < arrylent)
                 {
                     start++;
                     end++;
@@ -70,18 +68,6 @@ void    fill_b(t_list   **stack_a,t_list **stack_b, int   end)
             }
             else
                 ra(stack_a);
-            // head = *stack_a;
-            // while(head)
-            // {
-            //     printf("---%d---\n",head->data);
-            //     head = head->next;
-            // }
-            // head = *stack_b;
-            // while(head)
-            // {
-            //     printf("**%d**\n",head->data);
-            //     head = head->next;
-            // }
     }
 }
 
@@ -94,11 +80,11 @@ void    move_to_b(t_list    **stack_a, t_list   **stack_b)
     start = 0;
     i = start;
     if(lstsize(*stack_a) <= 10)
-        end = 1;
+        end = 2;
     else if(lstsize(*stack_a) <= 100)
-        end = lstsize(*stack_a) / 3;
+        end = lstsize(*stack_a) / 6;
     else
-        end = lstsize(*stack_a) / 14;
+        end = lstsize(*stack_a) / 10;
     fill_b(stack_a, stack_b, end);
     
 }
@@ -108,38 +94,42 @@ int main(int argc, char *argv[])
 {
     t_list  *stack_a;
     t_list  *stack_b;
-    t_list  *head;
+    // t_list  *head;
     int *arry;
     int i;
 
     i = 1;
     (void)argc;
+    // (void)argv;
     arry = NULL;
-    head = NULL;
+    
     stack_a = NULL;
     stack_b = NULL;
 
-    // while (*argv[i])
+    // lstadd_back(&stack_a, lstnew(10));
+    // lstadd_back(&stack_a, lstnew(5));
+    // lstadd_back(&stack_a, lstnew(2));
+    // lstadd_back(&stack_a, lstnew(8));
+    // lstadd_back(&stack_a, lstnew(6));
+    // lstadd_back(&stack_a, lstnew(4));
+    // lstadd_back(&stack_a, lstnew(7));
+    // lstadd_back(&stack_a, lstnew(1));
+    // lstadd_back(&stack_a, lstnew(9));
+    // lstadd_back(&stack_a, lstnew(3));
+    // head = stack_a;
+    // while (head)
     // {
-    //     lstadd_back(&stack_a,lstnew(ft_atoll(argv[i])));
-    //     i++;
+        // printf("%d\n", head->data);
+        // head = head->next;
     // }
     push_in_a(argv,&stack_a);
+    move_to_b(&stack_a, &stack_b);
+    // back_to_a(&stack_a, &stack_b);
 
 
 
 
-
-        // lstadd_back(&stack_a, lstnew(4));
-        // lstadd_back(&stack_a, lstnew(5));
-        // lstadd_back(&stack_a, lstnew(10));
-        // lstadd_back(&stack_a, lstnew(6));
-        // lstadd_back(&stack_a, lstnew(9));
-        // lstadd_back(&stack_a, lstnew(8));
-        // lstadd_back(&stack_a, lstnew(2));
-        // lstadd_back(&stack_a, lstnew(7));
-        // lstadd_back(&stack_a, lstnew(1));
-        // lstadd_back(&stack_a, lstnew(3));
+       
     // lstadd_back(&stack_a, lstnew(411));
     // lstadd_back(&stack_a, lstnew(100));
     // lstadd_back(&stack_a, lstnew(58));
@@ -262,7 +252,7 @@ int main(int argc, char *argv[])
     // lstadd_back(&stack_b, lstnew(-300));
     // lstadd_back(&stack_b, lstnew(4440));
     // lstadd_back(&stack_b, lstnew(5));
-    move_to_b(&stack_a, &stack_b);
+    
     // while(arry[i])
     // {
     //     printf("%d\n",arry[i]);
