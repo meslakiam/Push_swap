@@ -12,28 +12,28 @@
 
 #include "push_swap.h"
 
-void    pa(t_list   **stack_a, t_list   **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-    t_list  *tmp;
+	t_list	*tmp;
 
-    tmp = NULL;
-    if((!stack_a || !stack_b) || !(*stack_b))
-        return;
-    tmp = *stack_b;
-    *stack_b = (*stack_b)->next;
-    lstadd_front(stack_a, tmp);
-    write(1, "pa\n", 3);
+	tmp = NULL;
+	if ((!stack_a || !stack_b) || !(*stack_b))
+		return ;
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	lstadd_front(stack_a, tmp);
+	write(1, "pa\n", 3);
 }
 
-void    pb(t_list   **stack_b, t_list   **stack_a)
+void	pb(t_list **stack_b, t_list **stack_a)
 {
-    t_list  *tmp;
+	t_list	*tmp;
 
-    tmp = NULL;
-    if((!stack_b|| !stack_a)|| !(*stack_a))
-        return;
-    tmp = *stack_a;
-    *stack_a = (*stack_a)->next;
-    lstadd_front(stack_b, tmp);
-    write(1, "pb\n", 3);
+	tmp = NULL;
+	if ((!stack_b || !stack_a) || !(*stack_a))
+		return ;
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	lstadd_front(stack_b, tmp);
+	write(1, "pb\n", 3);
 }
