@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:08:49 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/01/27 22:08:50 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:48:08 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
 
 # define CHAINE_100 10
 # define CHAINE_500 14
@@ -53,6 +54,7 @@ void				free_strings(char **ptr, int i);
 long long			ft_atoll(const char *str);
 int					ft_isdigit(int n);
 char				**split(char const *s, char c);
+char				*strjoin(char const *s1, char const *s2);
 char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 size_t				ft_strlen(const char *str);
