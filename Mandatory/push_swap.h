@@ -18,7 +18,6 @@
 # include <string.h>
 # include <unistd.h>
 
-
 # define CHAINE_100 10
 # define CHAINE_500 14
 

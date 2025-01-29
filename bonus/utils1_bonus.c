@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 18:23:25 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/01/28 18:54:15 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:23:59 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char	*ft_strdup_bonus(const char *s1)
 	dst[i] = '\0';
 	return (dst);
 }
+
 size_t	ft_strlen_bonus(const char *str)
 {
 	size_t	i;

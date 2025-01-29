@@ -6,13 +6,13 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:53:24 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/01/28 18:56:06 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:26:49 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static	int	cmp_list(t_list **stack_a, char *str)
+static int	cmp_list(t_list **stack_a, char *str)
 {
 	long	num;
 	t_list	*head;
@@ -31,7 +31,7 @@ static	int	cmp_list(t_list **stack_a, char *str)
 	return (1);
 }
 
-static	void	add_to_list(t_list **stack_a, char **str)
+static void	add_to_list(t_list **stack_a, char **str)
 {
 	int	i;
 
@@ -75,10 +75,10 @@ void	push_in_a_bonus(char **str, t_list **stack_a)
 	char	**tmp;
 	char	*check;
 
-	tmp = NULL;
-	check = NULL;
 	i = 1;
 	j = 0;
+	tmp = NULL;
+	check = NULL;
 	while (str[i])
 	{
 		tmp = split_bonus(str[i], ' ');

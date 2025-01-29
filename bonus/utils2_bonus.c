@@ -64,4 +64,3 @@ void	del_last_bonus(t_list **stack)
 	free(last);
 	pre_last->next = NULL;
 }
-

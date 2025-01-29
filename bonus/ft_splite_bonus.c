@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap_bonus.h"
 
 static int	ft_count(char const *s, char c)
