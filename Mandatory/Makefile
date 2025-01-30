@@ -1,4 +1,4 @@
-NAME = push_swap.a
+NAME = push_swap
 
 CC = cc
 
@@ -10,13 +10,10 @@ sorted_arry.c sorted_back_in_a.c check_if_sorted.c small_range_num.c
 
 OBJ = $(SOURCES:.c=.o)
 
-all: push_swap fclean
-
-push_swap: $(NAME)
-	$(CC) $(CFLAGS) $(NAME) -o push_swap
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rcs $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean : 
 	@rm -rf $(OBJ)
@@ -26,4 +23,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re push_swap
+.PHONY : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 18:42:05 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/01/29 21:57:59 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:41:34 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ int	check_the_moves_existing(char *actions)
 
 void	checker(t_list **stack_a, t_list **stack_b)
 {
-	char	*str;
 	char	*read_line;
-	char	*operations;
-	char	*splited_moves;
 	int		count;
 
 	count = 0;
